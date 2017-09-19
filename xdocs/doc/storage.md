@@ -193,7 +193,7 @@ For any owner address and snapshot index, at most one of the following values co
 * Administration:CreateTokens
 * Token:Burn
 
-## 9. approves
+## 9. approved
 
 ### Signature
 
@@ -209,7 +209,26 @@ Value of `approved [owner][spender]` is the number of tokens belonging to the ow
 * ERC20:TransferFrom
 * ERC20:Allowance
 
-### Midifier in use cases
+### Modifier in use cases
 
 * ERC20:TransferFrom
 * ERC20:Approve
+
+## 10. snapshotCreator
+
+### Signature
+
+    address snapshotCreator
+
+### Description
+
+Address of the snapshot creator, i.e. the one who is allowed to create snapshots.
+
+### Read in use cases
+
+* Snapshot:Create
+
+### Modified in use cases
+
+* Administration:Deploy
+* Administration:SetSnapshotCreator
