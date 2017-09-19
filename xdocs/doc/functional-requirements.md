@@ -199,6 +199,7 @@ This functional block contains use cases related to smart contract administratio
 
 1. *User* deploys *Smart Contract*
 2. *Smart Contract* makes *User* to be the owner of *Smart Contract*
+3. *Smart Contract* makes *User* to be snapshot creator
 
 #### 1.2.2. Administration:Freeze
 
@@ -293,6 +294,24 @@ This functional block contains use cases related to smart contract administratio
 1. *User* calls method on *Smart Contract* providing the following information as method parameters: address of the new owner of *Smart Contract*
 2. *User is the owner of *Smart Contract*
 3. *Smart Contract* remember given address as the address of the owner of *Smart Contract*
+
+##### Exceptional Flow #1
+
+1. Same as in Main Flow
+2. *User* is not the owner of *Smart Contract*
+3. *Smart Contract* cancels transaction
+
+#### 1.2.6. Administration:SetSnapshotCreator
+
+**Actors**: *User*, *Smart Contract*
+
+**Goal**: *User* wants to set new snapshot creator for *Smart Contract*
+
+##### Main Flow
+
+1. *User* calls method on *Smart Contract* providing the following information as method parameters: address of the new snapshot creator of *Smart Contract*
+2. *User is the owner of *Smart Contract*
+3. *Smart Contract* remember given address as the address of snapshot creator of *Smart Contract*
 
 ##### Exceptional Flow #1
 
@@ -403,9 +422,16 @@ This functional block contains use cases related to snapshot of token balances.
 ##### Main Flow:
 
 1. *User* calls method on *Smart Contract*
-2. *Smart Contract* created snapshot
-3. *Smart Contract* logs event with the following information: index of new created snapshot
-4. *Smart Contract* returns the following information to *User*: index of new created snapshot
+2. *User* is snapshot creator
+3. *Smart Contract* created snapshot
+4. *Smart Contract* logs event with the following information: index of new created snapshot
+5. *Smart Contract* returns the following information to *User*: index of new created snapshot
+
+##### Exception Flow #1:
+
+1. Same as in Main Flow
+2. *User* is not snapshot creator
+3. *Smart Contract* cancel transaction
 
 ## 2. Limits
 

@@ -82,6 +82,30 @@ tests.push ({
 
         test.bob = getDeployedContract ("Bob", test.walletContract, test.tx);
       }},
+    { name: "Bob tries to set Bob as snapshot creator but he is not an owner of the smart contract",
+      body: function (test) {
+        personal.unlockAccount (test.alice, "");
+        test.tx = test.bob.execute (
+          test.scienceBlockchainTokenWrapper.address,
+          test.scienceBlockchainTokenWrapper.setSnapshotCreator.getData (test.bob.address),
+          0,
+          {from: test.alice, gas: 1000000});
+      }},
+    { name: "Make sure transaction failed",
+      precondition: function (test) {
+        miner.start ();
+        return web3.eth.getTransactionReceipt (test.tx);
+      },
+      body: function (test) {
+        miner.stop ();
+
+        assertEvents (
+          "test.bob.Result",
+          test.bob,
+          test.bob.Result,
+          test.tx,
+          { _value: false });
+      }},
     { name: "Alice makes Bob to be the owner of smart contract",
       body: function (test) {
         personal.unlockAccount (test.alice, "");
@@ -96,6 +120,60 @@ tests.push ({
       },
       body: function (test) {
         miner.stop ();
+      }},
+    { name: "Bob tries to creates snapshot but he is not a snapshot creator",
+      body: function (test) {
+        personal.unlockAccount (test.alice, "");
+        test.tx = test.bob.execute (
+          test.scienceBlockchainTokenWrapper.address,
+          test.scienceBlockchainTokenWrapper.snapshot.getData (),
+          0,
+          {from: test.alice, gas: 1000000});
+      }},
+    { name: "Make sure transaction failed",
+      precondition: function (test) {
+        miner.start ();
+        return web3.eth.getTransactionReceipt (test.tx);
+      },
+      body: function (test) {
+        miner.stop ();
+
+        assertEvents (
+          "test.bob.Result",
+          test.bob,
+          test.bob.Result,
+          test.tx,
+          { _value: false });
+
+        assertEvents (
+          "test.scienceBlockchainTokenWrapper.Snapshot",
+          test.scienceBlockchainTokenWrapper,
+          test.scienceBlockchainTokenWrapper.Snapshot,
+          test.tx);
+      }},
+    { name: "Bob sets Bob as snapshot creator",
+      body: function (test) {
+        personal.unlockAccount (test.alice, "");
+        test.tx = test.bob.execute (
+          test.scienceBlockchainTokenWrapper.address,
+          test.scienceBlockchainTokenWrapper.setSnapshotCreator.getData (test.bob.address),
+          0,
+          {from: test.alice, gas: 1000000});
+      }},
+    { name: "Make sure transaction succeeded",
+      precondition: function (test) {
+        miner.start ();
+        return web3.eth.getTransactionReceipt (test.tx);
+      },
+      body: function (test) {
+        miner.stop ();
+
+        assertEvents (
+          "test.bob.Result",
+          test.bob,
+          test.bob.Result,
+          test.tx,
+          { _value: true });
       }},
     { name: "Bob creates snapshot",
       body: function (test) {

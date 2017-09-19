@@ -12,11 +12,22 @@ import "./StandardSnapshottableToken.sol";
  */
 contract ScienceBlockchainToken is StandardSnapshottableToken {
   /**
-   * Create new Science Blockchain Token smart contract.
+   * Create new Science Blockchain Token smart contract and make message sender
+   * to be the owner of smart contract and to be a snapshot creator.
    */
   function ScienceBlockchainToken ()
     StandardSnapshottableToken () {
-    // Do nothing
+    snapshotCreator = msg.sender;
+  }
+
+  /**
+   * Create snapshot of token holder balances.
+   *
+   * @return index of new created snapshot
+   */
+  function snapshot () returns (uint256 index) {
+    require (msg.sender == snapshotCreator);
+    return AbstractSnapshottableToken.snapshot ();
   }
 
   /**
@@ -63,4 +74,19 @@ contract ScienceBlockchainToken is StandardSnapshottableToken {
     }
     return true;
   }
+
+  /**
+   * Set new snapshot creator address.
+   *
+   * @param _snapshotCreator new snapshot creator address
+   */
+  function setSnapshotCreator (address _snapshotCreator) {
+    require (msg.sender == owner);
+    snapshotCreator = _snapshotCreator;
+  }
+
+  /**
+   * Address of snapshot creator, i.e. the one allowed to create snapshots.
+   */
+  address snapshotCreator;
 }

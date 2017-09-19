@@ -354,6 +354,20 @@ Does not accept ether.
 
 * Administration:Unfreeze
 
+### 2.20. setSnapshotCreator
+
+    function setSnapshotCreator (address _snapshotCreator) {
+
+#### Description
+
+Set owner of _snapshotCreator address to be the snapshot creator, i.e. the one who is allowed to create snapshots.
+May be called only by the owner of smart contract.
+Does not accept ether.
+
+#### Use Cases
+
+* Admin:SetSnapshotCreator
+
 ## 3. Events
 
 ### 3.1. Transfer
