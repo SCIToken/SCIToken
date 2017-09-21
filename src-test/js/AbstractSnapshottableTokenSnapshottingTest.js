@@ -1,7 +1,6 @@
 /*
  * Test for Abstract Snapshottable Token Smart Contract that tests
  * snapshotting functionality.
- * Copyright © 2017 by ABDK Consulting.
  * Author: Mikhail Vladimirov <mikhail.vladimirov@gmail.com>
  */
 

@@ -1,6 +1,5 @@
 /*
  * Test for Standard Snapshottable Token Smart Contract.
- * Copyright © 2017 by ABDK Consulting.
  * Author: Mikhail Vladimirov <mikhail.vladimirov@gmail.com>
  */
 
