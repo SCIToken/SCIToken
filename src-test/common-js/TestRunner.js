@@ -1,6 +1,5 @@
 /*
  * Tests runner.
- * Copyright © 2016 by ABDK Consulting.
  * Author: Mikhail Vladimirov <mikhail.vladimirov@gmail.com>
  */
 

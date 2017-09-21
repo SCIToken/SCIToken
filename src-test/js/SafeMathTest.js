@@ -1,6 +1,5 @@
 /*
  * Test for Safe Math Smart Contract.
- * Copyright © 2016 by ABDK Consulting.
  * Author: Mikhail Vladimirov <mikhail.vladimirov@gmail.com>
  */
 

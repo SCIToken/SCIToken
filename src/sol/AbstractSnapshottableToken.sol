@@ -1,7 +1,6 @@
 /*
  * Abstract base contract for Token Smart Contracts that may create snapshots of
  * token holder balances.
- * Copyright © 2017 by ABDK Consulting.
  * Author: Mikhail Vladimirov <mikhail.vladimirov@gmail.com>
  */
 pragma solidity ^0.4.16;

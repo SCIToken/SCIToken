@@ -1,6 +1,5 @@
 /*
  * Common stuff needed for tests.
- * Copyright © 2016–2017 by ABDK Consulting.
  * Author: Mikhail Vladimirov <mikhail.vladimirov@gmail.com>
  */
 

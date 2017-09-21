@@ -1,6 +1,5 @@
 /*
  * Wrapper for Safe Math Smart Contract.
- * Copyright © 2016–2017 by ABDK Consulting.
  * Author: Mikhail Vladimirov <mikhail.vladimirov@gmail.com>
  */
 pragma solidity ^0.4.16;

@@ -1,7 +1,7 @@
 # Science Blockchain Token Smart Contract #
 
 ERC20 Ethereum token smart contract that allows creating snapshot of token
-balances.  Copyright © 2017 by ABDK Consulting.
+balances.
 
 **Author:** Mikhail Vladimirov <mikhail.vladimirov@gmail.com>
 
